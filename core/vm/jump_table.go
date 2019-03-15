@@ -62,24 +62,6 @@ var (
 func NewConstantinopleInstructionSet() [256]operation {
 	// instructions that can be executed during the byzantium phase.
 	instructionSet := NewByzantiumInstructionSet()
-	instructionSet[SHL] = operation{
-		execute:       opSHL,
-		gasCost:       constGasFunc(GasFastestStep),
-		validateStack: makeStackFunc(2, 1),
-		valid:         true,
-	}
-	instructionSet[SHR] = operation{
-		execute:       opSHR,
-		gasCost:       constGasFunc(GasFastestStep),
-		validateStack: makeStackFunc(2, 1),
-		valid:         true,
-	}
-	instructionSet[SAR] = operation{
-		execute:       opSAR,
-		gasCost:       constGasFunc(GasFastestStep),
-		validateStack: makeStackFunc(2, 1),
-		valid:         true,
-	}
 	return instructionSet
 }
 
@@ -117,6 +99,25 @@ func NewByzantiumInstructionSet() [256]operation {
 		valid:         true,
 		reverts:       true,
 		returns:       true,
+	}
+	//Add constatinople bit shifts here for etherus
+	instructionSet[SHL] = operation{
+		execute:       opSHL,
+		gasCost:       constGasFunc(GasFastestStep),
+		validateStack: makeStackFunc(2, 1),
+		valid:         true,
+	}
+	instructionSet[SHR] = operation{
+		execute:       opSHR,
+		gasCost:       constGasFunc(GasFastestStep),
+		validateStack: makeStackFunc(2, 1),
+		valid:         true,
+	}
+	instructionSet[SAR] = operation{
+		execute:       opSAR,
+		gasCost:       constGasFunc(GasFastestStep),
+		validateStack: makeStackFunc(2, 1),
+		valid:         true,
 	}
 	return instructionSet
 }
